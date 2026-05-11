@@ -161,20 +161,20 @@ function App() {
         <Route path="/gallery"><Gallery /></Route>
         <Route path="/contact"><Contact /></Route>
       </Router>
-      <footer className="bg-emerald-950 p-16 border-t border-amber-500/20 text-center">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-left mb-12">
+      <footer className="bg-emerald-950 px-4 py-10 md:p-16 border-t border-amber-500/20 text-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left mb-8 md:mb-12">
           <div>
-            <h3 className="text-amber-500 font-playfair text-xl font-bold mb-4">WONDROUS CAMP</h3>
-            <p className="text-sm opacity-80 leading-relaxed">Where adventure meets relaxation, creating memories and rejuvenating souls in the heart of nature.</p>
+            <h3 className="text-amber-500 font-playfair text-lg md:text-xl font-bold mb-3 md:mb-4">WONDROUS CAMP</h3>
+            <p className="text-xs md:text-sm opacity-80 leading-relaxed">Where adventure meets relaxation, creating memories and rejuvenating souls in the heart of nature.</p>
           </div>
           <div>
-            <h4 className="font-bold mb-4 uppercase text-xs">Address</h4>
-            <p className="text-sm opacity-80">Near Shivpuri Petrol Pump 4 km Leftside road from Hotel Grand Tapovan Kathiaa Village Road, Rishikesh, Uttarakhand 249192</p>
+            <h4 className="font-bold mb-3 md:mb-4 uppercase text-xs">Address</h4>
+            <p className="text-xs md:text-sm opacity-80">Near Shivpuri Petrol Pump 4 km Leftside road from Hotel Grand Tapovan Kathiaa Village Road, Rishikesh, Uttarakhand 249192</p>
           </div>
           <div>
-            <h4 className="font-bold mb-4 uppercase text-xs">Contact Us</h4>
-            <p className="text-sm opacity-80">📞 +91 - 7065477546</p>
-            <p className="text-sm opacity-80">✉️ wondrouscamp@gmail.com</p>
+            <h4 className="font-bold mb-3 md:mb-4 uppercase text-xs">Contact Us</h4>
+            <p className="text-xs md:text-sm opacity-80">📞 +91 - 7065477546</p>
+            <p className="text-xs md:text-sm opacity-80">✉️ wondrouscamp@gmail.com</p>
           </div>
         </div>
         <p className="text-xs opacity-50">&copy; 2024 All Rights Reserved. Developed by Wondrous Camp.</p>
