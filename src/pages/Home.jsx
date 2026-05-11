@@ -149,19 +149,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Packages Section — LAST on the page */}
-      <section id="packages" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-white/5">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-center mb-10 md:mb-16 text-white uppercase tracking-tighter">Our Camping Packages</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-          {packages.map(p => (
-            <div key={p} className="bg-white/5 p-8 md:p-12 rounded-2xl md:rounded-3xl border border-white/10 hover:border-amber-500 transition-all text-center">
-              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-amber-500 mb-4 md:mb-6 uppercase tracking-tighter">{p}</h3>
-              <a href="#/contact" className="inline-block bg-amber-500 text-white px-8 md:px-10 py-3 rounded-full font-bold hover:bg-amber-600 text-sm md:text-base">Select Package</a>
-            </div>
-          ))}
-        </div>
-      </section>
     </motion.div>
   );
 };

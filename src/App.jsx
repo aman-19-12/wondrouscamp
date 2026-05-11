@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Packages from './pages/Packages';
+import ServiceDetails from './pages/ServiceDetails';
 
 // Navbar logo
 const logoImg = new URL('./pages/assets/50.png', import.meta.url).href;
@@ -14,18 +16,20 @@ const Router = ({ children }) => {
       let hash = window.location.hash.slice(1) || '/';
       // Strip leading slash for section matching: "/about" → "about"
       const sectionId = hash.startsWith('/') ? hash.slice(1) : hash;
-      if (['about', 'adventures', 'packages'].includes(sectionId)) {
+      if (['about', 'adventures'].includes(sectionId)) {
         setCurrentPath('/');
         setTimeout(() => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        setCurrentPath(hash);
+        // Strip query string for route matching: "/service-details?type=ac" → "/service-details"
+        const pathOnly = hash.split('?')[0];
+        setCurrentPath(pathOnly);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
     
-    handleHashChange(); // Handle direct loads
+    handleHashChange();
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -164,6 +168,8 @@ function App() {
       <Navbar />
       <Router>
         <Route path="/"><Home /></Route>
+        <Route path="/packages"><Packages /></Route>
+        <Route path="/service-details"><ServiceDetails /></Route>
         <Route path="/gallery"><Gallery /></Route>
         <Route path="/contact"><Contact /></Route>
       </Router>
