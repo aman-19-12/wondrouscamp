@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
+// Navbar logo
+const logoImg = new URL('./pages/assets/50.png', import.meta.url).href;
+
 const Router = ({ children }) => {
   const [currentPath, setCurrentPath] = useState(window.location.hash.slice(1) || '/');
   useEffect(() => {
@@ -77,7 +80,8 @@ const Navbar = () => {
   return (
     <motion.nav className={`fixed top-0 left-0 right-0 z-50 px-4 transition-all duration-300 ${scrolled ? 'bg-white/95 text-emerald-950 shadow-xl py-3' : 'bg-white/95 text-emerald-950 shadow-md py-4'}`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="#/" onClick={closeMenu} className="text-2xl md:text-3xl font-playfair font-bold text-emerald-950 z-50">
+        <a href="#/" onClick={closeMenu} className="flex items-center gap-2 md:gap-3 text-2xl md:text-3xl font-playfair font-bold text-emerald-950 z-50">
+          <img src={logoImg} alt="Wondrous Camp Logo" className="h-8 md:h-10 w-auto object-contain" />
           WONDROUS <span className="text-amber-500">CAMP</span>
         </a>
         
