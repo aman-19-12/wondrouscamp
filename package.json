@@ -5,10 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
-    "preview": "vite preview",
-    "postinstall": "node -e \"try{require('fs').chmodSync('node_modules/.bin/vite',0o755)}catch(e){}\"",
-    "vercel-build": "npx vite build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
