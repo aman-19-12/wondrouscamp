@@ -9,10 +9,12 @@ const Router = ({ children }) => {
   useEffect(() => {
     const handleHashChange = () => {
       let hash = window.location.hash.slice(1) || '/';
-      if (['about', 'adventures', 'packages'].includes(hash)) {
+      // Strip leading slash for section matching: "/about" → "about"
+      const sectionId = hash.startsWith('/') ? hash.slice(1) : hash;
+      if (['about', 'adventures', 'packages'].includes(sectionId)) {
         setCurrentPath('/');
         setTimeout(() => {
-          document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
         setCurrentPath(hash);

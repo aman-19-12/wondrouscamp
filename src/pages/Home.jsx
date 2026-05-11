@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 // Proper Vite imports so images are bundled correctly at build time
 const heroImg = new URL('./assets/1.webp', import.meta.url).href;
 const resortImg = new URL('./assets/44.webp', import.meta.url).href;
 const teamImg = new URL('./assets/25.webp', import.meta.url).href;
-
+// Asset helper for Signature Experiences
+const getAsset = (id) => new URL(`./assets/${id}.webp`, import.meta.url).href;
 const Home = () => {
   const amenities = [
     { name: "24 Hrs Customer Care", i: "📞" },
@@ -16,18 +16,15 @@ const Home = () => {
     { name: "WIFI Connectivity", i: "📶" },
     { name: "Buffet Meals", i: "🍽️" }
   ];
-
   const activities = [
     "Brahmpuri River Rafting", "Bungee Jumping in Rishikesh", "Camping in Rishikesh", 
     "Flying Fox in Rishikesh", "Marine Drive River Rafting", "Rishikesh Camping Shipuri", 
     "River Rafting in Rishikesh", "Shivpuri River Rafting", "Zipline Activity"
   ];
-
   const packages = [
     "Couple Camping Package", "Family Camping Package", "1 Night 2 Days Camping Package", 
     "2 Night 3 Days Camping Package"
   ];
-
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       {/* Hero */}
@@ -42,7 +39,6 @@ const Home = () => {
           <a href="#/about" className="bg-amber-500 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-bold hover:scale-105 transition-transform inline-block text-sm md:text-base">DISCOVER MORE</a>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-center">
@@ -72,7 +68,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Services & Amenities Section */}
       <section className="py-16 md:py-24 bg-white text-emerald-950">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
@@ -88,7 +83,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Corporate Team Building Section */}
       <section className="py-16 md:py-24 bg-emerald-950 text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -104,7 +98,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Activities / Adventures Section */}
       <section id="adventures" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-white/5">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-center mb-10 md:mb-16 text-white uppercase">Adventure Activities</h2>
@@ -116,8 +109,48 @@ const Home = () => {
           ))}
         </div>
       </section>
+      {/* Signature Experiences Section */}
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-emerald-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-amber-400 mb-4">Signature Experiences</h2>
+            <p className="text-gray-400 uppercase tracking-widest text-xs md:text-sm">Where Luxury Meets the Wild</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { id: 46, title: "White Water Rafting", desc: "Conquer Grade II-IV rapids on the holy Ganges with professional gear." },
+              { id: 47, title: "Himalayan Trekking", desc: "Explore hidden waterfall trails and breathtaking vistas of the Shivpuri valley." },
+              { id: 48, title: "Luxury Pool Oasis", desc: "A pristine swimming pool surrounded by verdant forests for ultimate relaxation." },
+              { id: 49, title: "Corporate Leadership", desc: "Specialized team-building initiatives designed to foster collaboration." }
+            ].map((exp) => (
+              <motion.div
+                key={exp.id}
+                className="relative h-[350px] md:h-[450px] rounded-2xl md:rounded-[2rem] overflow-hidden group cursor-pointer border border-white/10"
+                style={{ perspective: "1000px" }}
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0px 0px 30px 5px rgba(212, 175, 55, 0.4)"
+                }}
+              >
+                <motion.img 
+                  src={getAsset(exp.id)} 
+                  alt={exp.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  whileHover={{ scale: 1.1, rotateY: 5, rotateX: -5 }}
+                />
+                <div className="absolute inset-x-3 md:inset-x-4 bottom-3 md:bottom-4 bg-emerald-950/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-xl md:rounded-[1.5rem] transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <h4 className="text-lg md:text-xl font-playfair font-bold text-amber-400 mb-1 md:mb-2">{exp.title}</h4>
+                  <p className="text-xs text-gray-300 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity delay-100">
+                    {exp.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Packages Section */}
+      {/* Packages Section — LAST on the page */}
       <section id="packages" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-white/5">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-center mb-10 md:mb-16 text-white uppercase tracking-tighter">Our Camping Packages</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
