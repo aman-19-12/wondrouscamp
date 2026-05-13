@@ -1,12 +1,28 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 // Proper Vite imports so images are bundled correctly at build time
 const heroImg = new URL('./assets/1.webp', import.meta.url).href;
-const resortImg = new URL('./assets/44.webp', import.meta.url).href;
 const teamImg = new URL('./assets/25.webp', import.meta.url).href;
 // Asset helper for Signature Experiences
 const getAsset = (id) => new URL(`./assets/${id}.webp`, import.meta.url).href;
+
+// Slideshow images for About section
+const slideImages = [3, 8, 22, 44, 26, 33].map(id => ({
+  id,
+  url: new URL(`./assets/${id}.webp`, import.meta.url).href
+}));
+
 const Home = () => {
+  // About slideshow state
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const amenities = [
     { name: "24 Hrs Customer Care", i: "📞" },
     { name: "Pick Up & Drop", i: "🚗" },
@@ -39,33 +55,51 @@ const Home = () => {
           <a href="#/about" className="bg-amber-500 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-bold hover:scale-105 transition-transform inline-block text-sm md:text-base">DISCOVER MORE</a>
         </div>
       </section>
-      {/* About Section */}
+      {/* About Section — Auto Slideshow */}
       <section id="about" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-amber-500 mb-6 md:mb-10 leading-tight">Comfort in the Heart of Wilderness</h2>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-              Located in the tranquil Kathiaa Village of Shivpuri, Wondrous Camp stands as a beacon of luxury amidst the rugged beauty of the Himalayas. 
-              We offer an impressive inventory of 35 meticulously crafted accommodations, including 22 modern cooler cottages and 13 traditional Swiss camps.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-amber-400 mb-6 md:mb-8 leading-tight tracking-tighter">
+              Tranquility Defined by the Ganges
+            </h2>
+            <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6 md:mb-8 font-light">
+              Located in the tranquil Kathiaa Village of Shivpuri, Wondrous Camp stands as a beacon of luxury amidst the rugged beauty of the Himalayas. We offer an impressive inventory of 35 meticulously crafted accommodations, blending modern comfort with the spiritual essence of the Ganges.
             </p>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 md:mb-10">
-              Our resort is more than just a place to stay; it is a commitment to sustainable "Responsible Tourism". 
-              Every room features king-size comfort and attached bathrooms, providing a sanctuary of peace overlooking the holy Ganges.
-            </p>
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
-              <div className="bg-white/5 p-4 md:p-6 rounded-2xl border border-amber-500/10">
-                <h4 className="text-amber-500 font-bold mb-2 uppercase text-xs tracking-widest">Sustainability</h4>
-                <p className="text-xs md:text-sm text-gray-400">Zero-waste practices and eco-conscious management.</p>
-              </div>
-              <div className="bg-white/5 p-4 md:p-6 rounded-2xl border border-amber-500/10">
-                <h4 className="text-amber-500 font-bold mb-2 uppercase text-xs tracking-widest">Hospitality</h4>
-                <p className="text-xs md:text-sm text-gray-400">Pristine service with a dedicated 24/7 adventure team.</p>
-              </div>
+            <div className="flex gap-6 md:gap-8">
+              <a href="#/packages" className="text-amber-400 font-bold border-b border-amber-400 pb-1 tracking-wider uppercase text-xs md:text-sm">Packages</a>
+              <a href="#/gallery" className="text-white font-bold border-b border-white pb-1 tracking-wider uppercase text-xs md:text-sm">Relive Moments</a>
             </div>
           </div>
-          <div className="h-[300px] md:h-[500px] lg:h-[600px] bg-white/5 rounded-2xl md:rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl">
-            <img src={resortImg} className="w-full h-full object-cover opacity-50" alt="Resort" />
-          </div>
+
+          {/* Glow Slideshow */}
+          <motion.div 
+            className="h-[300px] md:h-[500px] lg:h-[600px] bg-white/5 rounded-2xl md:rounded-[3rem] border border-white/10 overflow-hidden relative cursor-pointer group"
+            whileHover={{ 
+              boxShadow: "0px 0px 60px 20px rgba(212, 175, 55, 0.7)",
+              transition: { duration: 0.3 }
+            }}
+          >
+            <AnimatePresence initial={false} mode="wait">
+              <motion.img 
+                key={currentSlide}
+                src={slideImages[currentSlide].url}
+                alt={`Shivpuri Moment ${slideImages[currentSlide].id}`}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1, transition: { duration: 1.2, ease: "easeInOut" } }}
+                exit={{ opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } }}
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 brightness-[1.1]"
+              />
+            </AnimatePresence>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {slideImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-amber-400 w-6' : 'bg-white/40'}`}
+                />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
       {/* Services & Amenities Section */}
