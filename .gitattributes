@@ -1,0 +1,15 @@
+# Auto-normalize line endings
+* text=auto
+
+# Force LF for web files
+*.js text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+
+# Binary files — no conversion
+*.webp binary
+*.png binary
+*.jpg binary
