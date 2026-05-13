@@ -111,7 +111,7 @@ const Navbar = () => {
 
           <a href="#/gallery" className="hover:text-amber-500 py-4">Gallery</a>
           <a href="#/contact" className="hover:text-amber-500 py-4">Contact Us</a>
-          <a href="#/contact" className="ml-4 bg-amber-500 text-white border-2 border-amber-500 px-6 py-2.5 rounded-full hover:bg-white hover:text-amber-500 transition-all font-bold">BOOK NOW</a>
+          <a href="#/packages" className="ml-4 bg-amber-500 text-white border-2 border-amber-500 px-6 py-2.5 rounded-full hover:bg-white hover:text-amber-500 transition-all font-bold">BOOK NOW</a>
         </div>
 
         {/* Mobile Hamburger Toggle */}
@@ -153,7 +153,7 @@ const Navbar = () => {
               <a href="#/gallery" onClick={closeMenu} className="font-bold uppercase tracking-widest text-emerald-950 py-2 border-b border-gray-50">Gallery</a>
               <a href="#/contact" onClick={closeMenu} className="font-bold uppercase tracking-widest text-emerald-950 py-2 border-b border-gray-50">Contact Us</a>
               
-              <a href="#/contact" onClick={closeMenu} className="bg-amber-500 text-white text-center py-4 rounded-full font-bold uppercase tracking-widest mt-4">BOOK NOW</a>
+              <a href="#/packages" onClick={closeMenu} className="bg-amber-500 text-white text-center py-4 rounded-full font-bold uppercase tracking-widest mt-4">BOOK NOW</a>
             </motion.div>
           )}
         </AnimatePresence>
