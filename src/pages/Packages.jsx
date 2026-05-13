@@ -43,7 +43,7 @@ const Packages = () => {
             <div className="text-3xl md:text-5xl font-bold text-white mb-6 md:mb-10 tracking-tighter">₹{c.price} <span className="text-xs md:text-sm font-normal opacity-40">/ NIGHT</span></div>
             
             <a 
-              href={`#/service-details?type=${c.id}`} 
+              href={`#/service_details?type=${c.id}`} 
               className="bg-amber-400 text-emerald-950 px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-white hover:scale-105 transition-all inline-block shadow-xl shadow-amber-400/20 text-sm md:text-base"
             >
               BOOK NOW

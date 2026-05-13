@@ -22,7 +22,7 @@ const Router = ({ children }) => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        // Strip query string for route matching: "/service-details?type=ac" → "/service-details"
+        // Strip query string for route matching: "/service_details?type=ac" → "/service_details"
         const pathOnly = hash.split('?')[0];
         setCurrentPath(pathOnly);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -169,7 +169,7 @@ function App() {
       <Router>
         <Route path="/"><Home /></Route>
         <Route path="/packages"><Packages /></Route>
-        <Route path="/service-details"><ServiceDetails /></Route>
+        <Route path="/service_details"><ServiceDetails /></Route>
         <Route path="/gallery"><Gallery /></Route>
         <Route path="/contact"><Contact /></Route>
       </Router>

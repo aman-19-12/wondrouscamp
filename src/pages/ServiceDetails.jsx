@@ -79,7 +79,11 @@ const ServiceDetails = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-amber-400 text-emerald-950 font-bold py-3 md:py-4 rounded-full shadow-lg shadow-amber-400/30 hover:scale-[1.02] transition-all text-sm md:text-base">
+              <button 
+                type="button"
+                onClick={() => window.location.hash = "/contact"}
+                className="w-full bg-amber-400 text-emerald-950 font-bold py-3 md:py-4 rounded-full shadow-lg shadow-amber-400/30 hover:scale-[1.02] transition-all text-sm md:text-base"
+              >
                 BOOK NOW
               </button>
             </form>
